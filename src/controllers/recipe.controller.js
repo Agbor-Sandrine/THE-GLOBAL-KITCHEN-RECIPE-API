@@ -18,10 +18,13 @@ const getRecipes = async (req, res, next) => {
 // POST /recipes
 const createRecipe = async (req, res, next) => {
   try {
+    console.log("REQUEST BODY:", req.body);
+
     const recipe = await recipeService.createRecipe(req.body);
 
     res.status(201).json(recipe);
   } catch (error) {
+    console.log(" ERROR HERE:", error); // VERY IMPORTANT
     next(error);
   }
 };
